@@ -1,0 +1,15 @@
+.navbar{
+  width: 100%;
+  height: 50px;
+  background-color: blue;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-around;;
+}
+
+.item{
+  padding: 5px;
+  list-style: none;
+}
