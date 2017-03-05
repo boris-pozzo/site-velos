@@ -2,6 +2,10 @@ import React from "react";
 import "./menu.css";
 
 class Menu extends React.Component {
+  initCart() {
+    this.props.openCart(this.props.showComponent);
+  }
+
   render() {
     return (
       <div className="menu-container">
@@ -12,7 +16,9 @@ class Menu extends React.Component {
             <li className="item">Vélos</li>
             <li className="item">La marque</li>
             <li className="item">Contact</li>
-            <li className="item"><button>Cart</button></li>
+            <li className="item">
+              <button onClick={this.initCart.bind(this)}>Cart</button>
+            </li>
           </ul>
         </div>
 

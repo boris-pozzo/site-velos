@@ -11,7 +11,8 @@ class Container extends React.Component {
 
     this.state = {
       products: contenu.carte,
-      purchase: []
+      purchase: [],
+      showComponent: false
     };
   }
 
@@ -21,11 +22,19 @@ class Container extends React.Component {
     this.setState({ purchase: arr });
   }
 
+  openCart() {
+    this.setState({
+      showComponent: !this.state.showComponent
+    });
+  }
+
   render() {
     return (
       <div>
-        <Menu />
-        <Cart />
+        <Menu openCart={this.openCart.bind(this)} />
+        {this.state.showComponent
+          ? <Cart purchase={this.state.purchase} />
+          : null}
         <div className="flex">
           {this.state.products.map((produit, i) => {
             return (

@@ -1,0 +1,25 @@
+.cart-container{
+	width: 40%;
+	height: 500px;
+	position: fixed;
+	right: 0;
+	z-index: 99;
+  background-color: red;
+}
+
+.cart{
+	display: flex;
+	margin-bottom: 20px;
+}
+
+
+
+.cart-image{
+	display: inline-block;
+  width:100px;
+  height:100px;
+}
+
+.cart-description{
+	margin-left: 10px;
+}

@@ -8,10 +8,13 @@ class Products extends React.Component {
   render() {
     return (
       <div className="product-container">
-        <div className="product">
-          <div className="image" />
+        <div className="img-container">
+          <img src={this.props.product.image} alt="photo-produit" />
         </div>
-        <div className="button" onClick={this.initClick.bind(this)}>Buy</div>
+        <div className="button-container">
+          <div className="button" onClick={this.initClick.bind(this)}>Buy</div>
+        </div>
+
         <div className="description-container">
           <h1>{this.props.product.name}</h1>
           <p>{this.props.product.price}</p>
