@@ -17,7 +17,7 @@ class Products extends React.Component {
 
         <div className="description-container">
           <h1>{this.props.product.name}</h1>
-          <p>{this.props.product.price}</p>
+          <p>{this.props.product.price} €</p>
         </div>
       </div>
     );

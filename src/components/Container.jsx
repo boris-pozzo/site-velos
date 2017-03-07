@@ -11,15 +11,37 @@ class Container extends React.Component {
 
     this.state = {
       products: contenu.carte,
-      purchase: [],
+      cartContainer: [],
       showComponent: false
     };
+    this.test = this.test.bind(this);
   }
 
   add(product) {
-    let arr = this.state.purchase;
-    arr.push(product);
-    this.setState({ purchase: arr });
+    const arr = this.state.cartContainer;
+    const index = arr.indexOf(product);
+    if (index === -1) {
+      //si le tableau ne contient pas le produit
+      arr.push(product);
+      this.setState({ cartContainer: arr }); //je l'ajoute au tableau
+    } else {
+      arr[index].count++; // j'incrémente la quantité de mon produit
+      arr[index].total = arr[index].price * arr[index].count;
+      this.setState({ cartContainer: arr }); //et je mets à jours mon state pour qu'il puisse prendre en compte sa nouvelle valeur
+    }
+  }
+
+  delete(product) {
+    const arr = this.state.cartContainer;
+    const index = arr.indexOf(product);
+    console.log(product);
+    arr.map((produit, i) => {
+      console.log("ok");
+      // if (produit) {
+      //   arr[index].count--;
+      //   this.setState({ cartContainer: arr });
+      //}
+    });
   }
 
   openCart() {
@@ -28,13 +50,22 @@ class Container extends React.Component {
     });
   }
 
+  test() {
+    console.log(this.state.cartContainer);
+  }
+
   render() {
+    let ok = this.test();
+
     return (
       <div>
         <Menu openCart={this.openCart.bind(this)} />
         {this.state.showComponent
-          ? <Cart purchase={this.state.purchase} />
-          : null}
+          ? <Cart
+              cartContainer={this.state.cartContainer}
+              delete={this.delete.bind(this)}
+            />
+          : false}
         <div className="flex">
           {this.state.products.map((produit, i) => {
             return (
