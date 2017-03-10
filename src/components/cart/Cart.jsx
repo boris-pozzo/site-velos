@@ -3,10 +3,7 @@ import "./cart.css";
 
 class Cart extends React.Component {
   initDelete(product) {
-    const arr = this.state.cartContainer;
-    const index = arr.indexOf(product);
-    console.log(index);
-    //this.props.delete(this.props.name);
+    this.props.delete(product.id);
   }
 
   render() {
@@ -26,7 +23,10 @@ class Cart extends React.Component {
                   <div>Prix unit : {p.price} €</div>
                   <div>Quantité : {p.count}</div>
                   <div>Total : {p.total} €</div>
-                  <button onClick={this.initDelete.bind(this)} />
+                  <button onClick={() => this.initDelete(p)} />
+
+                  {/*arrow function: pr passer des paramètres et passer le this (eviter le ...bind(this))*/
+                  }
                 </div>
               </div>
             ))}

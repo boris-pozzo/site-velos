@@ -14,7 +14,6 @@ class Container extends React.Component {
       cartContainer: [],
       showComponent: false
     };
-    this.test = this.test.bind(this);
   }
 
   add(product) {
@@ -34,14 +33,21 @@ class Container extends React.Component {
   delete(product) {
     const arr = this.state.cartContainer;
     const index = arr.indexOf(product);
-    console.log(product);
-    arr.map((produit, i) => {
-      console.log("ok");
-      // if (produit) {
-      //   arr[index].count--;
-      //   this.setState({ cartContainer: arr });
-      //}
-    });
+
+    if (arr.length < 1) {
+      arr[index].count--;
+    } else {
+      arr.splice(index, 1);
+    }
+    this.setState({ cartContainer: arr });
+
+    // arr.map((produit, i) => {
+    //   arr
+    //   if (produit) {
+    //     arr[index].count--;
+    //     this.setState({ cartContainer: arr });
+    //   }
+    // });
   }
 
   openCart() {
@@ -50,13 +56,7 @@ class Container extends React.Component {
     });
   }
 
-  test() {
-    console.log(this.state.cartContainer);
-  }
-
   render() {
-    let ok = this.test();
-
     return (
       <div>
         <Menu openCart={this.openCart.bind(this)} />
